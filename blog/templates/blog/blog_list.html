@@ -13,7 +13,7 @@
     <div class="row">
         <div class="col-xs-12 col-sm-8 col-md-9 col-lg-10">
             <div class="panel panel-default">
-                <div class="panel-heading">{% block blog_list_title%}博客列表(一共有{{ blogs |  length}}篇博客){% endblock %}</div>
+                <div class="panel-heading">{% block blog_list_title%}博客列表{% endblock %}</div>
                 <div class="panel-body">
                     {% for blog in blogs %}
                          <div class="blog">
@@ -32,6 +32,41 @@
                     </div>
                     {% endfor %}
                 </div>
+            </div>
+            <div class="paginator">
+                <ul class="pagination">
+                    <li>{# 上一页 #}
+                        {% if page_of_blogs.has_previous %}
+                           <a href="?page={{page_of_blogs.previous_page_number}}" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
+                        {% else %}
+                           <span aria-hidden="true">&laquo;</span>
+                        {% endif %}
+                    </li>
+                    {# 全部页码 #}
+                    {% for page_num in page_range%}
+                         {% if page_num == page_of_blogs.number %}
+                           <li class="active" ><a href="?page={{ page_num}}">{{ page_num}}</a></li>
+                         {% else %}
+                             <li>
+                                 {% if page_num == '...'%}
+                                    <span>{{ page_num }}</span>
+                                 {% else %}
+                                   <a href="?page={{ page_num}}">{{ page_num}}</a>
+                                 {% endif %}
+                             </li>
+                         {% endif%}
+
+                    {% endfor%}
+                    <li>
+                        {# 下一页 #}
+                        {% if page_of_blogs.has_next%}
+                           <a href="?page={{page_of_blogs.next_page_number}}" aria-label="Previous"><span aria-hidden="true">&raquo;</span></a>
+                        {% else %}
+                         <span aria-hidden="true">&raquo;</span>
+                        {% endif %}
+                    </li>
+                </ul>
+                <p>共有{{ page_of_blogs.paginator.count }}篇博客, 当前第{{ page_of_blogs.number }}, 共{{ page_of_blogs.paginator.num_pages}}页</p>
             </div>
         </div>
 

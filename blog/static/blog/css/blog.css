@@ -27,3 +27,11 @@ ul.blog-info-description li{
 div.blog-content{
     text-indent: 2em;
 }
+
+div.paginator{
+    text-align: center;
+}
+
+div.blog-more{
+    margin-top: 1em;
+}

@@ -23,6 +23,7 @@ class Blog(models.Model):
 
     class Meta:
         db_table = 'blog'
+        ordering = ['-created_time'] #-表示倒序
 
     def __str__(self):
         return '<Blog: %s>' % self.title
