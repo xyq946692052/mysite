@@ -28,6 +28,7 @@ def get_blog_list_common_data(request, blogs_all_list):
     if page_range[-1] != paginator.num_pages:
         page_range.append(paginator.num_pages)
 
+    #日期归档统计
     blog_dates = Blog.objects.dates('created_time', 'month', order='DESC')
     blog_dates_dict = {}
     for blog_date in blog_dates:
@@ -67,9 +68,17 @@ def blogs_with_date(request, year, month):
 
 
 def blog_detail(request, blog_pk):
-    context = {}
     blog = get_object_or_404(Blog, pk=blog_pk)
+
+    #阅读计数
+    if not request.COOKIES.get('blog_%s_readed' % blog_pk):
+        blog.readed_num += 1
+        blog.save()
+    
+    context = {}
     context['blog'] = blog
     context['previous_blog'] = Blog.objects.filter(created_time__gt=blog.created_time).last() #上一篇
     context['next_blog'] = Blog.objects.filter(created_time__lt=blog.created_time).first() #下一篇
-    return render_to_response('blog/blog_detail.html', context)
+    response =  render_to_response('blog/blog_detail.html', context) #相应
+    response.set_cookie('blog_%s_readed'% blog_pk, 'true')
+    return response
