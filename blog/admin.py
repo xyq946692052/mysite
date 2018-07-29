@@ -12,3 +12,10 @@ class BlogTypeAdmin(admin.ModelAdmin):
 class BlogAdmin(admin.ModelAdmin):
     list_display = ('id', 'blog_type', 'author', 'title', 'is_deleted', 'created_time', 'last_updated_time')
     ordering = ('-id',)
+
+'''
+@admin.register(ReadNum)
+class ReadNumAdmin(admin.ModelAdmin):
+    list_display = ('id', 'read_num', 'blog')
+    ordering = ('id',)
+'''

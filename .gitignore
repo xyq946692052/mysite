@@ -1,0 +1,5 @@
+blog/__pycache__
+mysite/__pycache__
+blog/migrations
+media/
+.pyc
