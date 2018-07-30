@@ -3,3 +3,5 @@ mysite/__pycache__
 blog/migrations
 media/
 .pyc
+.idea/
+
