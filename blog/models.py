@@ -1,8 +1,9 @@
 from django.db import models
 from django.db.models.fields import exceptions
+from django.contrib.contenttypes.fields import GenericRelation
 from ckeditor_uploader.fields import RichTextUploadingField
 from django.contrib.auth.models import User
-from read_statistics.models import ReadNumExpendMethod
+from read_statistics.models import ReadNumExpendMethod, ReadDetail
 
 # Create your models here.
 
@@ -21,6 +22,7 @@ class Blog(models.Model, ReadNumExpendMethod):
     blog_type = models.ForeignKey(BlogType, on_delete=models.DO_NOTHING)
     content = RichTextUploadingField()
     author = models.ForeignKey(User, on_delete=models.DO_NOTHING)
+    read_details = GenericRelation(ReadDetail)
     created_time = models.DateTimeField(auto_now_add=True)
     last_updated_time = models.DateTimeField(auto_now=True)
     is_deleted = models.BooleanField(default=False)

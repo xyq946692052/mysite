@@ -7,7 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1"><!-- bootstrap根据屏幕大小响应式适应不同屏幕 -->
         <title>{% block title %}{% endblock%}</title>
         <link rel="stylesheet" href="{% static '/css/base.css'%}">
-        {% block style %}{% endblock %}
+        {% block header_extends %}{% endblock %}
     </head>
     <body>
         <div class="navbar navbar-default" role="navigation">
