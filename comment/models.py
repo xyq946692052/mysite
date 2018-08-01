@@ -15,3 +15,4 @@ class Comment(models.Model):
 
     class Meta:
         db_table = 'comment'
+        ordering = ['-comment_time']
