@@ -4,6 +4,8 @@
 
 {% block style %}
       <link rel="stylesheet" href="{% static '/blog/css/blog.css'%}">
+      <script type="text/javascript" src="{% static '/ckeditor/ckeditor-init.js' %}"></script>
+      <script type="text/javascript" src="{% static '/ckeditor/ckeditor.js' %}"></script>
 {% endblock %}
 
 {% block content %}
@@ -44,20 +46,19 @@
             <div class="comment-area" >
                 <h3 class="comment-area-title">提交评论</h3>
                 {% if user.is_authenticated %}
-                    <form action="#" method="POST" style="overflow:hidden;">
-                        {% csrf_token %}
-                        <div class="form-group">
-                            <label for="comment_text">{{ user.username}}, 欢迎评论~</label>
-                            <textarea id="comment_area" class="form-control" name="text" rows="4"></textarea>
-                        </div>
 
-                        <input type="hidden" name="object_id" value="{{ blog.pk}}">
-                        <input type="hidden" name="content_type" value="blog">
+                    <form action="{% url 'update_comment' %}" method="POST" style="overflow:hidden;">
+                        <label>{{ user.username}}, 欢迎评论~</label>
+                        {% csrf_token %}
+                        {{ comment_form }}
                         <input type="submit" value="评论" class="btn btn-primary" style="float:right;">
                     </form>
+
                 {% else %}
                     您尚未登录, 登陆之后方可评论
                     <a href="{% url 'login' %}?from={{ request.path }}" class="btn btn-primary">登录</a>
+                    <span>or</span>
+                    <a href="{% url 'register' %}?from={{ request.path }}" class="btn btn-danger">注册</a>
                 {% endif%}
             </div>
             <div class="comment-area">

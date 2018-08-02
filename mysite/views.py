@@ -5,10 +5,11 @@ from django.utils import timezone
 from django.core.cache import cache
 from django.contrib.contenttypes.models import ContentType
 from django.contrib import auth
+from django.contrib.auth.models import User
 from django.urls import reverse
 from read_statistics.utils import get_seven_read_data, get_today_hot_data, get_yesterday_hot_data
 from blog.models import Blog
-from .forms import LoginForm
+from .forms import LoginForm, RegForm
 
 def get_7_days_hot_blogs():
     today = timezone.now().date()
@@ -51,4 +52,31 @@ def login(request):
     context = {}
     context['login_form'] = login_form
     return render(request, 'login.html',context)
+
+
+def register(request):
+    if request.method == 'POST':
+        reg_form = RegForm(request.POST)
+        if reg_form.is_valid():
+            username = reg_form.cleaned_data['username']
+            password = reg_form.cleaned_data['password']
+            email = reg_form.cleaned_data['email']
+
+            #注册用户
+            user = User()
+            user.username = username
+            user.email = email
+            user.set_password(password) #密码加密
+            user.save()
+
+            #登录用户
+            user = auth.authenticate(username=username, password=password)
+            auth.login(request, user)
+            return redirect(request.GET.get('from'), reverse('home'))
+    else:
+        reg_form = RegForm()
+
+    context = {}
+    context['reg_form'] = reg_form
+    return render(request, 'register.html',context)
 
