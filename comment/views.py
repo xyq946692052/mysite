@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse
-from django.contrib.contenttypes.models import ContentType
 from .models import Comment
 from .forms import CommentForm
 
@@ -16,6 +15,5 @@ def update_comment(request):
         comment.content_object = comment_form.cleaned_data['content_object']
         comment.save()
         return redirect(referer)
-
     else:
-        return render(request, 'error.html',{'message':comment_form.errors,'redirect_to':referer})
+        return render(request, 'error.html', {'message': comment_form.errors, 'redirect_to': referer})

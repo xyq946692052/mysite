@@ -7,11 +7,11 @@ from ckeditor.widgets import CKEditorWidget
 class CommentForm(forms.Form):
     content_type = forms.CharField(widget=forms.HiddenInput)
     object_id = forms.IntegerField(widget=forms.HiddenInput)
-    text = forms.CharField(widget=CKEditorWidget())
+    text = forms.CharField(widget = CKEditorWidget(config_name='comment_ckeditor'))
 
     def __init__(self, *args, **kwargs):
         if 'user' in kwargs:
-            self.user = kwargs.pop('user')  #为了继承不出错，不能将外面传入的user加进self
+            self.user = kwargs.pop('user')   #为了继承不出错，不能将外面传入的user加进self
         super(CommentForm, self).__init__(*args, **kwargs)
 
 
