@@ -7,6 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1"><!-- bootstrap根据屏幕大小响应式适应不同屏幕 -->
         <title>{% block title %}{% endblock%}</title>
         <link rel="stylesheet" href="{% static '/css/base.css'%}">
+        <script type="text/javascript" src="{% static '/js/jquery-2.0.2.min.js' %}" language="javascript"></script>
         {% block header_extends %}{% endblock %}
     </head>
     <body>
@@ -37,9 +38,11 @@
         </div>
 
         {% block content %}{% endblock %}
+        {% block script_extends %}{% endblock %}
 
         <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
         <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="http://lib.sinaapp.com/js/jquery/2.0.2/jquery-2.0.2.min.js">
     </body>
 </html>
