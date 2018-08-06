@@ -83,6 +83,6 @@ def blog_detail(request, blog_pk):
     context['next_blog'] = Blog.objects.filter(created_time__lt=blog.created_time).first() #下一篇
     context['comments'] = comments
     context['comment_form'] = CommentForm(initial={'content_type':blog_content_type.model,'object_id':blog.pk})
-    response =  render(request,'blog/blog_detail.html', context)  #相应
+    response = render(request,'blog/blog_detail.html', context)  #相应
     response.set_cookie(read_cookie_key, 'true')
     return response
