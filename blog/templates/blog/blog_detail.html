@@ -64,10 +64,20 @@
                 <h3 class="comment-area-title">评论列表</h3>
                 <div id="comment_list">
                     {% for comment in comments %}
-                        <div>
+                         <div class="comment" style="border: 1px dashed #ccc; margin-bottom:0.5em;padding-bottom:0.5em;">
                             {{ comment.user.username}}
-                            {{ comment.comment_time |date:"Y-m-d H:n:s"}}
+                            {{ comment.comment_time |date:"Y-m-d H:i:s"}}
                             {{ comment.text | safe}}
+
+                            {% for reply in comment.root_comment.all %}
+                                 <div class="reply" style="margin-left:2em;">
+                                    {{ reply.user.username}}
+                                    {{ reply.comment_time|date:"Y-m-d H:i:s"}}
+                                     回复
+                                    {{ reply.reply_to.username}}
+                                    {{ reply.text }}
+                                </div>
+                            {% endfor%}
                         </div>
                     {% empty %}
                         暂无评论
