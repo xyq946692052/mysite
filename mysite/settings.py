@@ -156,7 +156,12 @@ CKEDITOR_CONFIGS = {
         'tabSpaces': 4,
         'removePlugins': 'elementspath',
         'resize_enabled': False,
-    }
+    },
+    'default': {
+        'toolbar': 'full',
+        'height': 300,
+        'width': 300,
+    },
 }
 
 #自定义参数
