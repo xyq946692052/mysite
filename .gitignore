@@ -1,6 +1,12 @@
 blog/__pycache__
 mysite/__pycache__
+comment/__pycache__
+read_statistics/__pycache__
+
 blog/migrations
+comment/migrations
+read_statistics/migrations
+
 media/
 .pyc
 .idea/
