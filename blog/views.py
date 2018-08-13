@@ -76,13 +76,13 @@ def blog_detail(request, blog_pk):
     read_cookie_key = read_statistics_once_read(request, blog) #阅读计数
     blog_content_type = ContentType.objects.get_for_model(blog)
     comments = Comment.objects.filter(content_type=blog_content_type, object_id=blog.pk, parent=None)
-    
+
     context = dict()
     context['blog'] = blog
     context['previous_blog'] = Blog.objects.filter(created_time__gt=blog.created_time).last() #上一篇
     context['next_blog'] = Blog.objects.filter(created_time__lt=blog.created_time).first() #下一篇
-    context['comments'] = comments
-    context['comment_form'] = CommentForm(initial={'content_type':blog_content_type.model,'object_id':blog.pk})
+    context['comments'] = comments.order_by('-comment_time')
+    context['comment_form'] = CommentForm(initial={'content_type':blog_content_type.model,'object_id':blog.pk, 'reply_comment_id':0})
     response = render(request,'blog/blog_detail.html', context)  #相应
     response.set_cookie(read_cookie_key, 'true')
     return response
