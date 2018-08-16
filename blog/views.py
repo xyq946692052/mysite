@@ -76,7 +76,7 @@ def blog_detail(request, blog_pk):
     read_cookie_key = read_statistics_once_read(request, blog) #阅读计数
     blog_content_type = ContentType.objects.get_for_model(blog)
     comments = Comment.objects.filter(content_type=blog_content_type, object_id=blog.pk, parent=None)
-    
+
     context = dict()
     context['blog'] = blog
     context['previous_blog'] = Blog.objects.filter(created_time__gt=blog.created_time).last() #上一篇
