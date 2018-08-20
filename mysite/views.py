@@ -60,6 +60,7 @@ def login_for_medal(request):
     data = {}
     if login_form.is_valid():
         user = login_form.cleaned_data['user']
+        auth.login(request, user)
         data['status'] = 'SUCCESS'
     else:
         data['status'] = 'ERROR'
