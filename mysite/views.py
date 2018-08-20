@@ -93,3 +93,13 @@ def register(request):
     context['reg_form'] = reg_form
     return render(request, 'register.html',context)
 
+
+def logout(request):
+    auth.logout(request)
+    return redirect(request.GET.get('from', reverse('home')))
+
+
+def user_info(request):
+    context = {}
+    return render(request, 'user_info.html',context)
+
