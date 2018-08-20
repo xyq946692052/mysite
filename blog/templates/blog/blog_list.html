@@ -19,7 +19,7 @@
                 <div class="panel-body">
                     {% for blog in blogs %}
                          <div class="blog">
-                             <h3><a href="{% url 'blog_detail' blog.pk %}">{{ blog.title }}</a></h3>
+                             <h4><a href="{% url 'blog_detail' blog.pk %}">{{ blog.title }}</a></h4>
 
                              <p class="blog-info">
                                  <span class="glyphicon glyphicon-tag"></span><a href="{% url 'blogs_with_type' blog.blog_type.pk %}"> {{ blog.blog_type }}</a>&nbsp;&nbsp;
@@ -29,6 +29,7 @@
 
                              <p>{{ blog.content | safe| striptags| truncatechars:120}}</p>
                          </div>
+                    <hr>
                     {% empty %}
                     <div class="blog">
                         <h3>--暂无博客，敬请期待 --</h3>
