@@ -26,12 +26,7 @@ urlpatterns = [
     path('blog/', include('blog.urls')),
     path('comment/', include('comment.urls')),
     path('likes/', include('likes.urls')),
-    path('login/', views.login, name='login'),
-    path('logout/', views.logout, name='logout'),
-    path('user_info/', views.user_info, name='user_info'),
-    path('login_for_medal/', views.login_for_medal, name='login_for_medal'),
-    path('register/', views.register, name='register'),
-
+    path('user/', include('user.urls')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -5,8 +5,6 @@ from django.conf import settings
 from django.db.models import Count
 from read_statistics.utils import read_statistics_once_read
 from .models import Blog, BlogType
-from mysite.forms import LoginForm
-
 
 # Create your views here.
 
@@ -76,7 +74,6 @@ def blog_detail(request, blog_pk):
 
     context = dict()
     context['blog'] = blog
-    context['login_form'] = LoginForm()
     context['previous_blog'] = Blog.objects.filter(created_time__gt=blog.created_time).last() #上一篇
     context['next_blog'] = Blog.objects.filter(created_time__lt=blog.created_time).first() #下一篇
     response = render(request,'blog/blog_detail.html', context)  #相应
