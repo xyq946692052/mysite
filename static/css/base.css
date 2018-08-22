@@ -14,6 +14,16 @@ ul.navbar-right{
     margin-right:0px;
 }
 
-#navbar{
-    background-color: #FFF;
+.navbar{
+    background-color: #fff;
+    color: #000;
+}
+
+.navbar a{
+    color:#000;
+    font-size: 1em;
+}
+
+.navbar-header{
+    margin-left:10%;
 }
