@@ -27,3 +27,28 @@ ul.navbar-right{
 .navbar-header{
     margin-left:10%;
 }
+
+.navbar-form{
+    position: relative;
+    right: 10px;
+}
+
+@media (max-width: 767px){
+    .navbar-form button[type="submit"]{
+        top:35%;
+    }
+}
+
+.header-banner{
+    text-align: center;
+    min-height: 160px;
+    position: relative;
+    margin-top: -20px;
+    padding-top: 30px;
+    margin-bottom: 20px;
+    background-color: #003300;
+}
+
+.header-banner-info{
+    color: #fff;
+}

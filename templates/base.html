@@ -11,8 +11,8 @@
         {% block header_extends %}{% endblock %}
     </head>
     <body>
-        <div class="navbar" role="navigation">
-            <div class="container-fluid">
+        <div class="navbar navbar-default" style="background-color: #fff;font-weight:bold;color:#000;" role="navigation">
+            <div class="container-fluid" style="margin-left: 3%;">
                 <div class="navbar-header">
                      <a class="navbar-brand" href="{% url 'home' %}">
                          个人博客网站
@@ -35,6 +35,16 @@
                     </ul>
 
                     <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <form action="#" class="navbar-form navbar-right">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="博文搜索">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
+                                    </span>
+                                </div>
+                            </form>
+                        </li>
                         {% if not user.is_authenticated %}
                            <li><a  href="{% url 'register' %}?from={{ request.get_full_path }}">
                                <span class="glyphicon glyphicon-user"></span> 注册</a>
@@ -62,6 +72,11 @@
 
                 </div>
             </div>
+        </div>
+
+        <div class="header-banner">
+            <h1><p class="header-banner-info">我的世界 海阔天空</p></h1>
+            <h5><p class="header-banner-info">Fear can hold you prisoner. Hope can set you free. A strong man can save himself. A greatman can save another.</p></h5>
         </div>
 
         {% block content %}{% endblock %}
