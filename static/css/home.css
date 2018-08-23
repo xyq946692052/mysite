@@ -16,7 +16,8 @@ div#trend-container {
 
 div.hot-data{
     text-align: center;
-    margin-top:2em;
+    margin-top:1%;
+    font-weight:bold;
 }
 
 #home{
@@ -31,7 +32,8 @@ div.hot-data{
 
 div.tag-data{
     text-align: center;
-    margin-top:2em;
+    margin-top:1%;
+    font-weight:bold;
 }
 
 #aboutme{
