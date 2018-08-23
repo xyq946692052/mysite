@@ -6,6 +6,7 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
+        ('likes', '0002_likecount_likerecord'),
     ]
 
     operations = [

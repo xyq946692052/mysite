@@ -22,7 +22,7 @@ class BlogType(models.Model):
 
 
 class BlogTag(models.Model):
-    tag_name = models.CharField(max_length=15, default="django")
+    tag_name = models.CharField(max_length=15)
 
     class Meta:
         db_table = 'blog_tag'

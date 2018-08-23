@@ -28,6 +28,7 @@ urlpatterns = [
     path('likes/', include('likes.urls')),
     path('user/', include('user.urls')),
     path('mdeditor/', include('mdeditor.urls')),
+    path('search/', include('haystack.urls')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -36,11 +36,11 @@
 
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                            <form action="#" class="navbar-form navbar-right">
+                            <form action="{% url 'haystack_search'%}" id="searchform" class="navbar-form navbar-right" method="get">
                                 <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="博文搜索">
+                                    <input type="text" class="form-control" name="q"  placeholder="博文搜索">
                                     <span class="input-group-btn">
-                                        <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
+                                        <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
                                     </span>
                                 </div>
                             </form>

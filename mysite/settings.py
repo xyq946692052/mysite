@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'ckeditor',
     'ckeditor_uploader',
+    'haystack',
     'blog',
     'read_statistics',
     'comment',
@@ -205,3 +206,13 @@ MDEDITOR_CONFIGS = {
 
     }
 }
+
+
+HAYSTACK_CONNECTIONS = {
+    'default':{
+        'ENGINE':'blog.whoosh_cn_backends.WhooshEngine',
+        'PATH':os.path.join(BASE_DIR, 'whoosh_index'),
+    },
+}
+HAYSTACK_SEARCH_RESULTS_PER_PAGE = 6
+HAYSTACK_SIGNAL_PROCESSOR='haystack.signals.RealtimeSignalProcessor'
