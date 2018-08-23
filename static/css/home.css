@@ -15,7 +15,8 @@ div#trend-container {
 }
 
 div.hot-data{
-    text-align: center;
+    margin-left:30%;
+    text-align: left;
     margin-top:1%;
     font-weight:bold;
 }
@@ -31,14 +32,15 @@ div.hot-data{
 }
 
 div.tag-data{
-    text-align: center;
+    margin-left:30%;
+    text-align: left;
     margin-top:1%;
     font-weight:bold;
 }
 
 #aboutme{
-padding:4%;
-background-image: url(../img/timg.jpg);
+    padding:4%;
+    background-image: url(../img/timg.jpg);
 }
 
 #trend{
