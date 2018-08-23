@@ -87,7 +87,7 @@
                                 <span>{{ comment.user.username }}</span>
                                 <span>({{ comment.comment_time|date:"Y-m-d H:i:s" }})：</span>
                                 <div id="comment_{{ comment.pk }}">
-                                    {{ comment.text}}
+                                    {{ comment.text | safe}}
                                 </div>
 
                                  <div class="like" onclick="likeChange(this, '{% get_content_type comment %}', {{ comment.pk }})">
