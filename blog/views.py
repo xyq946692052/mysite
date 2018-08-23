@@ -6,6 +6,8 @@ from django.db.models import Count
 from read_statistics.utils import read_statistics_once_read
 from .models import Blog, BlogType, BlogTag
 
+
+
 # Create your views here.
 
 def get_blog_list_common_data(request, blogs_all_list):
@@ -77,10 +79,10 @@ def blogs_with_date(request, year, month):
     return render(request,'blog/blogs_with_date.html', context)
 
 
-# def blogs_with_search(request, ketstr):
-#     blogs_all_list = Blog.objects.filter(content__icontains = ketstr)
-#     context = get_blog_list_common_data(request, blogs_with_search)
-#     return render(request, '/blog/blogs_with_search', context)
+def blogs_with_search(request, ketstr):
+    blogs_all_list = Blog.objects.filter(content__icontains = ketstr)
+    context = get_blog_list_common_data(request, blogs_with_search)
+    return render(request, '/blog/blogs_with_search', context)
 
 
 def blog_detail(request, blog_pk):
@@ -89,6 +91,7 @@ def blog_detail(request, blog_pk):
 
     context = dict()
     context['blog'] = blog
+    context['content'] = blog.get_content_html()
     context['previous_blog'] = Blog.objects.filter(created_time__gt=blog.created_time).last() #上一篇
     context['next_blog'] = Blog.objects.filter(created_time__lt=blog.created_time).first() #下一篇
     response = render(request,'blog/blog_detail.html', context)  #相应

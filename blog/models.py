@@ -6,6 +6,8 @@ from django.contrib.auth.models import User
 from read_statistics.models import ReadNumExpendMethod, ReadDetail
 
 from mdeditor.fields import MDTextField
+from django.utils.safestring import mark_safe
+from markdown2 import markdown
 
 # Create your models here.
 
@@ -46,6 +48,10 @@ class Blog(models.Model, ReadNumExpendMethod):
 
     def __str__(self):
         return '<Blog: %s>' % self.title
+
+    def get_content_html(self):
+        html = markdown(self.content, extras=['code-friendly'])
+        return mark_safe(html)
 
 
 
