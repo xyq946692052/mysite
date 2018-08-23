@@ -17,9 +17,20 @@ class BlogType(models.Model):
         return self.type_name
 
 
+class BlogTag(models.Model):
+    tag_name = models.CharField(max_length=15, default="django")
+
+    class Meta:
+        db_table = 'blog_tag'
+
+    def __str__(self):
+        return self.tag_name
+
+
 class Blog(models.Model, ReadNumExpendMethod):
     title = models.CharField(max_length=30)
     blog_type = models.ForeignKey(BlogType, on_delete=models.CASCADE)
+    blog_tag = models.ForeignKey(BlogTag, on_delete=models.CASCADE)
     content = RichTextUploadingField()
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     read_details = GenericRelation(ReadDetail)

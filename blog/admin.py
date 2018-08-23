@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import BlogType, Blog
+from .models import BlogType, BlogTag, Blog
 
 # Register your models here.
 
@@ -7,6 +7,13 @@ from .models import BlogType, Blog
 class BlogTypeAdmin(admin.ModelAdmin):
     list_display = ('id', 'type_name')
     ordering = ('id',)
+
+
+@admin.register(BlogTag)
+class BlogTagAdmin(admin.ModelAdmin):
+    list_display = ('id', 'tag_name')
+    ordering = ('id',)
+
 
 @admin.register(Blog)
 class BlogAdmin(admin.ModelAdmin):
