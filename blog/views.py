@@ -77,6 +77,12 @@ def blogs_with_date(request, year, month):
     return render(request,'blog/blogs_with_date.html', context)
 
 
+def blogs_with_search(request, ketstr):
+    blogs_all_list = Blog.objects.filter(content__icontains = ketstr)
+    context = get_blog_list_common_data(request, blogs_with_search)
+    return render(request, '/blog/blogs_with_search', context)
+
+
 def blog_detail(request, blog_pk):
     blog = get_object_or_404(Blog, pk=blog_pk)
     read_cookie_key = read_statistics_once_read(request, blog) #阅读计数
