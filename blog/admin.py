@@ -24,5 +24,5 @@ class BlogAdmin(admin.ModelAdmin):
     ordering = ('-id',)
 
     formfield_overrides = {
-        models.MDTextField:{'widget':MDEditorWidget}
+        models.MDTextField:{'widget':MDEditorWidget(config_name='content_mdeditor')}
     }
