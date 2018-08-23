@@ -20,9 +20,10 @@ div.hot-data{
 }
 
 #home{
-    margin-top:3%;
-    margin-left:3%;
+    padding:3%;
     font-size:1.2em;
+    background-image: url(../img/bcbg.jpg);
+
 }
 .home-title{
     font-size:1.5em;
