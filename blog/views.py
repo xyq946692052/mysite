@@ -4,7 +4,7 @@ from django.contrib.contenttypes.models import ContentType
 from django.conf import settings
 from django.db.models import Count
 from read_statistics.utils import read_statistics_once_read
-from .models import Blog, BlogType
+from .models import Blog, BlogType, BlogTag
 
 # Create your views here.
 
@@ -42,6 +42,7 @@ def get_blog_list_common_data(request, blogs_all_list):
     context['blogs'] = page_of_blogs.object_list
     context['page_of_blogs'] = page_of_blogs
     context['blog_types'] = BlogType.objects.annotate(blog_count=Count('blog'))
+    context['blog_tags'] = BlogTag.objects.annotate(blog_count=Count('blog'))
     context['blog_dates'] = blog_dates_dict
     context['page_range'] = page_range  # 显示页码范围
     return context
@@ -59,6 +60,14 @@ def blogs_with_type(request, blog_type_pk):
     context = get_blog_list_common_data(request, blogs_all_list)
     context['blog_type'] = blog_type
     return render(request, 'blog/blogs_with_type.html', context)
+
+
+def blogs_with_tag(request, blog_tag_pk):
+    blog_tag = get_object_or_404(BlogTag, pk=blog_tag_pk)
+    blogs_all_list = Blog.objects.filter(blog_tag = blog_tag)
+    context = get_blog_list_common_data(request, blogs_all_list)
+    context['blog_tag'] = blog_tag
+    return render(request, 'blog/blogs_with_tag.html', context)
 
 
 def blogs_with_date(request, year, month):

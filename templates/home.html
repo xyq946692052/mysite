@@ -57,8 +57,20 @@
                 </ul>
             </div>
 
-               <p class="hot-blog-title"><span class="glyphicon glyphicon-tags"></span>&nbsp;&nbsp;标签</p>
+              <br/>
+              <p class="hot-blog-title"><span class="glyphicon glyphicon-tags"></span>&nbsp;&nbsp;标签</p>
               <hr class="hr">
+              <div class="tag-data">
+                  <ul>
+                      {% for tag in blog_tags %}
+                      <li>
+                          <a href="{% url 'blogs_with_tag' tag.pk %}">
+                              {{ tag.tag_name}}({{ tag.blog_count}})
+                          </a>
+                      </li>
+                      {% endfor %}
+                  </ul>
+              </div>
 
           </div>
 

@@ -17,5 +17,5 @@ class BlogTagAdmin(admin.ModelAdmin):
 
 @admin.register(Blog)
 class BlogAdmin(admin.ModelAdmin):
-    list_display = ('id', 'blog_type', 'author','get_read_num', 'title', 'is_deleted', 'created_time', 'last_updated_time')
+    list_display = ('id', 'blog_type', 'blog_tag', 'author','get_read_num', 'title', 'is_deleted', 'created_time', 'last_updated_time')
     ordering = ('-id',)
