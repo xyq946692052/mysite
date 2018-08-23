@@ -52,3 +52,7 @@ ul.navbar-right{
 .header-banner-info{
     color: #fff;
 }
+
+span.highlighted {
+     color: red;
+}
