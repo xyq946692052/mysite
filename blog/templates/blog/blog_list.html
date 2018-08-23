@@ -27,7 +27,7 @@
                                  阅读({{ blog.get_read_num }})&nbsp;&nbsp;评论({% get_comment_count blog%})&nbsp;&nbsp;点赞({% get_like_count blog%})
                              </p>
 
-                             <p>{{ blog.content.get_content_html() | safe| striptags| truncatechars:120}}</p>
+                             <p>{{ blog.content | safe| striptags| truncatechars:120}}</p>
                          </div>
                     <hr>
                     {% empty %}
