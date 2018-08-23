@@ -5,6 +5,7 @@
 {% load staticfiles %}
 {% load comment_tags %}
 {% load likes_tag %}
+{% load markdown_tag %}
 
 {% block header_extends %}
     <link rel="stylesheet" href="{% static 'blog/blog.css' %}">
@@ -87,7 +88,7 @@
                                 <span>{{ comment.user.username }}</span>
                                 <span>({{ comment.comment_time|date:"Y-m-d H:i:s" }})：</span>
                                 <div id="comment_{{ comment.pk }}">
-                                    {{ comment.text|safe }}
+                                    {{ comment.text|djangomarkdown }}
                                 </div>
 
                                  <div class="like" onclick="likeChange(this, '{% get_content_type comment %}', {{ comment.pk }})">

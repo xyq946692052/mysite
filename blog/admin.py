@@ -1,5 +1,8 @@
 from django.contrib import admin
 from .models import BlogType, BlogTag, Blog
+from . import models
+
+from mdeditor.widgets import MDEditorWidget
 
 # Register your models here.
 
@@ -19,3 +22,7 @@ class BlogTagAdmin(admin.ModelAdmin):
 class BlogAdmin(admin.ModelAdmin):
     list_display = ('id', 'blog_type', 'blog_tag', 'author','get_read_num', 'title', 'is_deleted', 'created_time', 'last_updated_time')
     ordering = ('-id',)
+
+    formfield_overrides = {
+        models.MDTextField:{'widget':MDEditorWidget}
+    }

@@ -10,7 +10,7 @@
 }
 
 div#trend-container {
-   width: 50%;
+   width:60%;
    float:left;
 }
 
@@ -32,4 +32,13 @@ div.hot-data{
 div.tag-data{
     text-align: center;
     margin-top:2em;
+}
+
+#aboutme{
+padding:4%;
+background-image: url(../img/timg.jpg);
+}
+
+#trend{
+    padding:4%;
 }

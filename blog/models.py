@@ -5,6 +5,8 @@ from ckeditor_uploader.fields import RichTextUploadingField
 from django.contrib.auth.models import User
 from read_statistics.models import ReadNumExpendMethod, ReadDetail
 
+from mdeditor.fields import MDTextField
+
 # Create your models here.
 
 class BlogType(models.Model):
@@ -31,7 +33,7 @@ class Blog(models.Model, ReadNumExpendMethod):
     title = models.CharField(max_length=30)
     blog_type = models.ForeignKey(BlogType, on_delete=models.CASCADE)
     blog_tag = models.ForeignKey(BlogTag, on_delete=models.CASCADE, null=True)
-    content = RichTextUploadingField()
+    content = MDTextField()
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     read_details = GenericRelation(ReadDetail)
     created_time = models.DateTimeField(auto_now_add=True)

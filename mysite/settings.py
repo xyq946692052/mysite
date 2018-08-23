@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'comment',
     'likes',
     'user',
+    'mdeditor',
 ]
 
 MIDDLEWARE = [
