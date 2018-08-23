@@ -30,7 +30,7 @@ class BlogTag(models.Model):
 class Blog(models.Model, ReadNumExpendMethod):
     title = models.CharField(max_length=30)
     blog_type = models.ForeignKey(BlogType, on_delete=models.CASCADE)
-    blog_tag = models.ForeignKey(BlogTag, on_delete=models.CASCADE)
+    blog_tag = models.ForeignKey(BlogTag, on_delete=models.CASCADE, null=True)
     content = RichTextUploadingField()
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     read_details = GenericRelation(ReadDetail)
