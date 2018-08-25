@@ -50,3 +50,14 @@ div.tag-data{
 .perinfo{
     color: #337AB7;
 }
+
+.visitfont{
+    color: #000;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+.visitnum{
+    color: #337AB7;
+    font-size: 1.2em;
+    font-weight: bold;
+}
