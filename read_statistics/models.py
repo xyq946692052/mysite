@@ -31,7 +31,7 @@ class ReadDetail(models.Model):
 
 
 class Userip(models.Model):
-    ip = models.CharField(verbose_name='IP地址', max_length=30)
+    uip = models.CharField(verbose_name='IP地址', max_length=30)
     count = models.IntegerField(verbose_name='访问次数', default=0)
 
     class Meta:

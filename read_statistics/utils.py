@@ -70,13 +70,13 @@ def change_ip_or_visitnum(request):
     else:
         client_ip = request.META.get('REMOTE_ADDR', '')  #此处为获得代理IP
 
-    ip_exist = Userip.objects.filter(ip=str(client_ip))
+    ip_exist = Userip.objects.filter(uip=str(client_ip))
     if ip_exist:
         uobj = ip_exist[0]
         uobj.count += 1
     else:
         uobj = Userip()
-        uobj.ip = client_ip
+        uobj.uip = client_ip
         uobj.count = 1
     uobj.save()
     return VisitCount.objects.all()[0].count
