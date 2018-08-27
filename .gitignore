@@ -11,3 +11,5 @@ media/
 .pyc
 .idea/
 
+venv/
+
