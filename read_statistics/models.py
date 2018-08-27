@@ -33,8 +33,8 @@ class ReadDetail(models.Model):
 class Userip(models.Model):
     uip = models.CharField(verbose_name='IP地址', max_length=30)
     count = models.IntegerField(verbose_name='访问次数', default=0)
-    created_time = models.DateTimeField(auto_now_add=True, default=timezone.now)
-    last_updated_time = models.DateTimeField(auto_now=True, default=timezone.now)
+    created_time = models.DateTimeField(auto_now_add=True)
+    last_updated_time = models.DateTimeField(auto_now=True)
 
     class Meta:
         db_table = 'user_ip'
