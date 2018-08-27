@@ -154,16 +154,19 @@ CKEDITOR_CONFIGS = {
             ['Link', 'Unlink'],
             ["Smiley", "SpecialChar", 'Blockquote'],
         ],
+        'extraPlugins': 'codesnippet',
         'width': 'auto',
         'height': '180',
         'tabSpaces': 4,
         'removePlugins': 'elementspath',
         'resize_enabled': False,
     },
+
     'default': {
         'toolbar': 'full',
         'height': 300,
         'width': 'auto',
+        'extraPlugins': 'codesnippet',
     },
 }
 
