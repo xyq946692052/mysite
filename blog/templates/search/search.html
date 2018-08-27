@@ -54,65 +54,6 @@
                 </div>
             </div>
         </div>
-
-        <div class="hidden-xs col-sm-4 col-md-3 col-lg-2">
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <h3 class="panel-title"><h4><span class="glyphicon glyphicon-list"></span>&nbsp博客分类</h4></h3>
-              </div>
-
-                <div class="panel-body">
-                    <ul class="blog-types">
-                        {% for blog_type in blog_types %}
-                            <li>
-                                <a href="{% url 'blogs_with_type' blog_type.pk %}">
-                                    {{ blog_type.type_name}}({{ blog_type.blog_count}})
-                                </a>
-                            </li>
-                        {% empty %}
-                            <li>暂无分类</li>
-                        {% endfor %}
-                    </ul>
-                </div>
-
-            </div>
-
-                <div class="panel panel-default">
-              <div class="panel-heading">
-                <h3 class="panel-title"><h4> <span class="glyphicon glyphicon-tag"></span>&nbsp;标签</h4></h3>
-              </div>
-
-                <div class="panel-body">
-                    <ul class="blog-types">
-                        {% for blog_tag in blog_tags %}
-                            <li>
-                                <a href="{% url 'blogs_with_tag' blog_tag.pk %}">
-                                    {{ blog_tag.tag_name}}({{ blog_tag.blog_count}})
-                                </a>
-                            </li>
-                        {% empty %}
-                            <li>暂无分类</li>
-                        {% endfor %}
-                    </ul>
-                </div>
-
-            </div>
-
-            <div class="panel panel-default">
-                <div class="panel-heading"><span class="glyphicon glyphicon-calendar"></span>&nbsp;日期归档</div>
-                <div class="panel-body">
-                    <ul>
-                        {% for blog_date, blog_count in blog_dates.items %}
-                        <li>
-                            <a href="{% url 'blogs_with_date' blog_date.year blog_date.month %}">
-                                {{ blog_date | date:"Y年m月"}}({{ blog_count }})
-                            </a>
-                        </li>
-                        {% endfor %}
-                    </ul>
-                </div>
-            </div>
-        </div>
     </div>
 </div>
 {% endblock %}
