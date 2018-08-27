@@ -14,7 +14,7 @@ class ReadDetailAdmin(admin.ModelAdmin):
 
 @admin.register(Userip)
 class UseripAdmin(admin.ModelAdmin):
-    list_display = ('id', 'uip', 'count')
+    list_display = ('id', 'uip', 'count','created_time','last_updated_time')
 
 
 @admin.register(VisitCount)
