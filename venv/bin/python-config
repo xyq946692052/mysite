@@ -1,4 +1,4 @@
-#!/home/mypy/venv/bin/python
+#!/home/mypy/mysite/venv/bin/python
 
 import sys
 import getopt
