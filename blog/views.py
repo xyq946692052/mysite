@@ -58,7 +58,7 @@ def blog_list(request):
 
 def blogs_with_type(request, blog_type_pk):
     blog_type = get_object_or_404(BlogType, pk=blog_type_pk)
-    blogs_all_list = Blog.objects.filter(blog_type = blog_type)
+    blogs_all_list = Blog.objects.filter(blog_type = blog_type,is_display=True)
     context = get_blog_list_common_data(request, blogs_all_list)
     context['blog_type'] = blog_type
     return render(request, 'blog/blogs_with_type.html', context)
@@ -66,21 +66,21 @@ def blogs_with_type(request, blog_type_pk):
 
 def blogs_with_tag(request, blog_tag_pk):
     blog_tag = get_object_or_404(BlogTag, pk=blog_tag_pk)
-    blogs_all_list = Blog.objects.filter(blog_tag = blog_tag)
+    blogs_all_list = Blog.objects.filter(blog_tag = blog_tag,is_display=True)
     context = get_blog_list_common_data(request, blogs_all_list)
     context['blog_tag'] = blog_tag
     return render(request, 'blog/blogs_with_tag.html', context)
 
 
 def blogs_with_date(request, year, month):
-    blogs_all_list = Blog.objects.filter(created_time__year=year, created_time__month=month)
+    blogs_all_list = Blog.objects.filter(created_time__year=year, created_time__month=month,is_display=True)
     context = get_blog_list_common_data(request,blogs_all_list)
     context['blogs_with_date'] = '%s年%s月' %(year, month)
     return render(request,'blog/blogs_with_date.html', context)
 
 
 def blogs_with_search(request, ketstr):
-    blogs_all_list = Blog.objects.filter(content__icontains = ketstr)
+    blogs_all_list = Blog.objects.filter(content__icontains = ketstr,is_display=True)
     context = get_blog_list_common_data(request, blogs_with_search)
     return render(request, '/blog/blogs_with_search', context)
 
