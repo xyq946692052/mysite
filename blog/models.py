@@ -42,7 +42,7 @@ class Blog(models.Model, ReadNumExpendMethod):
     created_time = models.DateTimeField(auto_now_add=True)
     last_updated_time = models.DateTimeField(auto_now=True)
     is_deleted = models.BooleanField(default=False)
-    is_display = models.BooleanField(default=True)
+    is_display = models.BooleanField(default=False)
 
     class Meta:
         db_table = 'blog'
